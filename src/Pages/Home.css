@@ -1,0 +1,375 @@
+/* Home Page Styles */
+.clickifyr-home-page {
+  min-height: 100vh;
+  font-family: 'Arial', sans-serif;
+  overflow-x: hidden;
+}
+
+/* Custom Header */
+.clickifyr-custom-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px 0;
+  background: transparent;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.clickifyr-custom-header.scrolled {
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.clickifyr-header-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 45px;
+}
+
+.clickifyr-logo {
+  display: flex;
+  align-items: center;
+  opacity: 0;
+  animation: logoFadeIn 0.5s ease-out 0.1s forwards;
+}
+
+/* Logo animation for faster loading */
+@keyframes logoFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.clickifyr-logo-img {
+  height: 170px;
+  width: auto;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.clickifyr-logo-img:hover {
+  opacity: 0.8;
+}
+
+.clickifyr-nav {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+/* Updated Navigation Link Styles for Buttons */
+.clickifyr-nav-link {
+  background: none;
+  border: none;
+  font-size: 16px;
+  font-weight: 500;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.3s ease;
+  position: relative;
+  padding: 8px 16px;
+  padding-bottom: 12px;
+  border-radius: 0;
+}
+
+/* Hover effect underline for hero section (white) */
+.clickifyr-nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background: white;
+  transition: width 0.3s ease;
+}
+
+.clickifyr-nav-link:hover::after {
+  width: 80%;
+}
+
+.clickifyr-nav-link:hover {
+  color: white;
+  background: none;
+}
+
+.clickifyr-nav-link:focus {
+  outline: none;
+}
+
+/* Active link styling for hero section */
+.clickifyr-nav-link.active {
+  color: white;
+  font-weight: 600;
+}
+
+.clickifyr-nav-link.active::after {
+  width: 80%;
+  background: white;
+}
+
+/* Scrolled header styles */
+.clickifyr-custom-header.scrolled .clickifyr-nav-link {
+  color: #333;
+}
+
+.clickifyr-custom-header.scrolled .clickifyr-nav-link:hover {
+  color: #8b5cf6;
+  background: none;
+}
+
+.clickifyr-custom-header.scrolled .clickifyr-nav-link::after {
+  background: #8b5cf6;
+}
+
+.clickifyr-custom-header.scrolled .clickifyr-nav-link.active {
+  color: #8b5cf6;
+  font-weight: 600;
+}
+
+.clickifyr-custom-header.scrolled .clickifyr-nav-link.active::after {
+  background: #8b5cf6;
+}
+
+.clickifyr-contact-btn {
+  background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+  color: white;
+  border: none;
+  padding: 10px 30px;
+  border-radius: 25px;
+  font-size: 14px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+}
+
+.clickifyr-contact-btn:hover {
+  background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(139, 92, 246, 0.4);
+}
+
+.clickifyr-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Hero Section */
+.clickifyr-hero-section {
+    background-image: url('https://images.unsplash.com/photo-1560179707-f14e90ef3623?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Y29tcGFueXxlbnwwfHwwfHx8MA%3D%3D');
+    background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 10px 0 10px;
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.clickifyr-hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.733) 0%, rgba(0, 0, 0, 0.151) 100%);
+  z-index: 1;
+}
+
+.clickifyr-hero-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 40px;
+  position: relative;
+  z-index: 2;
+  color: white;
+}
+
+.clickifyr-hero-content {
+  max-width: 1000px;
+  animation: slideInLeft 1s ease-out;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 60px;
+}
+
+.clickifyr-hero-title {
+  font-size: 58px;
+  font-weight: 900;
+  color: white;
+  margin-bottom: 20px;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  text-align: center;
+    margin-top: -20px;
+}
+
+.clickifyr-hero-title .highlight {
+  color: #8b5cf6;
+  display: inline;
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.clickifyr-hero-description {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 30px;
+  line-height: 1.6;
+  font-weight: 400;
+  text-align: center;
+  max-width: 600px;
+}
+
+.clickifyr-hero-button {
+  background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  letter-spacing: 0.5px;
+}
+
+.clickifyr-hero-button:hover {
+  background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(139, 92, 246, 0.4);
+}
+
+/* Animation for scroll-triggered elements */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .clickifyr-hero-container {
+    padding: 0 20px;
+    text-align: center;
+  }
+  
+  .clickifyr-hero-content {
+    max-width: 100%;
+  }
+  
+  .clickifyr-hero-title {
+    font-size: 32px;
+  }
+  
+  .clickifyr-hero-description {
+    font-size: 14px;
+  }
+  
+  .clickifyr-section-title {
+    font-size: 28px;
+  }
+  
+  .clickifyr-services-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .clickifyr-about-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
+  }
+  
+  .clickifyr-about-text {
+    padding-right: 0;
+  }
+  
+  .clickifyr-team-image {
+    width: 300px;
+    height: 200px;
+  }
+  
+  .clickifyr-hero-section {
+    padding: 80px 0;
+    min-height: 500px;
+  }
+  
+  .clickifyr-services-preview,
+  .clickifyr-about-preview {
+    padding: 60px 0;
+  }
+  
+  .clickifyr-nav {
+    gap: 20px;
+  }
+  
+  .clickifyr-header-container {
+    padding: 0 20px;
+  }
+  
+  /* Mobile navigation adjustments */
+  .clickifyr-nav-link {
+    font-size: 14px;
+    padding: 6px 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .clickifyr-hero-title {
+    font-size: 36px;
+  }
+  
+  .clickifyr-hero-section {
+    padding: 60px 0;
+    min-height: 400px;
+  }
+  
+  .clickifyr-nav {
+    gap: 15px;
+  }
+  
+  .clickifyr-nav-link {
+    font-size: 13px;
+    padding: 5px 10px;
+  }
+  
+  .clickifyr-logo-img {
+    height: 140px;
+  }
+}

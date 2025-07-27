@@ -1,0 +1,355 @@
+/* Clickifyr Footer Styles */
+.clickifyr-footer {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  color: #ffffff;
+  padding: 60px 0 0;
+  font-family: 'Arial', sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+.clickifyr-footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="0.5" fill="rgba(255,255,255,0.02)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+  pointer-events: none;
+}
+
+.clickifyr-footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 40px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Left Section - Company Info */
+.clickifyr-footer-left {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  text-align: left;
+}
+
+.clickifyr-footer-logo h3 {
+  font-size: 28px;
+  font-weight: bold;
+  margin: 0;
+  background: linear-gradient(45deg, #64b5f6, #42a5f5, #2196f3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  text-align: left;
+}
+
+.clickifyr-footer-description p {
+  color: #b0bec5;
+  line-height: 1.6;
+  margin: 0;
+  font-size: 14px;
+  text-align: left;
+}
+
+.clickifyr-footer-social-section h4 {
+  color: #ffffff;
+  margin: 0 0 15px 0;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: left;
+}
+
+.clickifyr-footer-social-icons {
+  display: flex;
+  gap: 15px;
+  justify-content: flex-start;
+}
+
+.clickifyr-footer-social-icon {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, #424242, #616161);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.clickifyr-footer-social-icon::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, #64b5f6, #42a5f5, #2196f3);
+  transition: left 0.3s ease;
+  z-index: -1;
+}
+
+.clickifyr-footer-social-icon:hover::before {
+  left: 0;
+}
+
+.clickifyr-footer-social-icon:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(100, 181, 246, 0.3);
+  color: #ffffff;
+}
+
+.clickifyr-footer-social-icon i {
+  font-size: 18px;
+  z-index: 1;
+}
+
+.clickifyr-footer-social-icon svg {
+  z-index: 1;
+  transition: transform 0.3s ease;
+}
+
+.clickifyr-footer-social-icon:hover svg {
+  transform: scale(1.1);
+}
+
+/* Middle Section - Quick Links */
+.clickifyr-footer-middle {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+.clickifyr-footer-services h4,
+.clickifyr-footer-company h4 {
+  color: #ffffff;
+  margin: 0 0 20px 0;
+  font-size: 18px;
+  font-weight: 600;
+  position: relative;
+}
+
+.clickifyr-footer-services h4::after,
+.clickifyr-footer-company h4::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 30px;
+  height: 2px;
+  background: linear-gradient(45deg, #64b5f6, #2196f3);
+  border-radius: 1px;
+}
+
+.clickifyr-footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.clickifyr-footer-links li {
+  margin-bottom: 12px;
+}
+
+.clickifyr-footer-links a {
+  color: #b0bec5;
+  text-decoration: none;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+}
+
+.clickifyr-footer-links a::before {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: #64b5f6;
+  transition: width 0.3s ease;
+}
+
+.clickifyr-footer-links a:hover {
+  color: #64b5f6;
+  transform: translateX(5px);
+}
+
+.clickifyr-footer-links a:hover::before {
+  width: 100%;
+}
+
+/* Button styled as link */
+.clickifyr-footer-link-btn {
+  background: none;
+  border: none;
+  color: #b0bec5;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 0;
+  text-align: left;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  font-family: inherit;
+}
+
+.clickifyr-footer-link-btn::before {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: #64b5f6;
+  transition: width 0.3s ease;
+}
+
+.clickifyr-footer-link-btn:hover {
+  color: #64b5f6;
+  transform: translateX(5px);
+}
+
+.clickifyr-footer-link-btn:hover::before {
+  width: 100%;
+}
+
+/* Right Section - Contact */
+.clickifyr-footer-right h4 {
+  color: #ffffff;
+  margin: 0 0 20px 0;
+  font-size: 18px;
+  font-weight: 600;
+  position: relative;
+}
+
+.clickifyr-footer-right h4::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 30px;
+  height: 2px;
+  background: linear-gradient(45deg, #64b5f6, #2196f3);
+  border-radius: 1px;
+}
+
+.clickifyr-footer-contact p {
+  color: #b0bec5;
+  margin: 0 0 20px 0;
+  font-size: 14px;
+}
+
+.clickifyr-footer-contact-btn {
+  background: linear-gradient(45deg, #64b5f6, #42a5f5, #2196f3);
+  color: #ffffff;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 25px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(100, 181, 246, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.clickifyr-footer-contact-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, #2196f3, #1976d2, #1565c0);
+  transition: left 0.3s ease;
+  z-index: -1;
+}
+
+.clickifyr-footer-contact-btn:hover::before {
+  left: 0;
+}
+
+.clickifyr-footer-contact-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(100, 181, 246, 0.4);
+}
+
+/* Bottom Bar */
+.clickifyr-footer-bottom {
+  margin-top: 50px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.clickifyr-footer-bottom-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.clickifyr-footer-bottom p {
+  color: #90a4ae;
+  margin: 0;
+  font-size: 14px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .clickifyr-footer-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  
+  .clickifyr-footer-left {
+    text-align: left;
+  }
+  
+  .clickifyr-footer-middle {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  
+  .clickifyr-footer-social-icons {
+    justify-content: flex-start;
+  }
+  
+  .clickifyr-footer-logo h3 {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .clickifyr-footer {
+    padding: 40px 0 0;
+  }
+  
+  .clickifyr-footer-container {
+    padding: 0 15px;
+    gap: 30px;
+  }
+  
+  .clickifyr-footer-social-icon {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .clickifyr-footer-social-icon i {
+    font-size: 16px;
+  }
+}

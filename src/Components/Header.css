@@ -1,0 +1,165 @@
+/* Header Styles */
+.clickifyr-header {
+  background-color: white;
+  padding: 0;
+
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.clickifyr-header-container {
+  max-width: 1200px;
+  height: 40px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 15px;
+}
+
+/* Logo Section */
+.clickifyr-logo-section {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.clickifyr-logo-image {
+  width: 170px;
+  height: auto;
+  object-fit: contain;
+}
+
+.clickifyr-logo-text {
+  color: #333;
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+  cursor: pointer;
+  background: linear-gradient(135deg, #7462ff 0%, #b794f6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Navigation Styles */
+.clickifyr-navigation {
+  flex: 2;
+  display: flex;
+  justify-content: center;
+}
+
+.clickifyr-nav-list {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 40px;
+}
+
+.clickifyr-nav-item {
+  position: relative;
+}
+
+.clickifyr-nav-link {
+  text-decoration: none;
+  color: #333;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 10px 0;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+/* Hover Effect - Purple underline */
+.clickifyr-nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(135deg, #7462ff 0%, #b794f6 100%);
+  transition: width 0.3s ease;
+}
+
+.clickifyr-nav-link:hover::after {
+  width: 100%;
+}
+
+.clickifyr-nav-link:hover {
+  color: #b794f6;
+}
+
+/* Active Link - Purple underline */
+.clickifyr-nav-link-active {
+  color: #7462ff !important;
+}
+
+.clickifyr-nav-link-active::after {
+  width: 100% !important;
+}
+
+/* Button Section */
+.clickifyr-button-section {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.clickifyr-contact-button {
+  background: linear-gradient(135deg, #7462ff 0%, #b794f6 100%);
+  color: white;
+  border: none;
+  padding: 8px 30px;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(116, 98, 255, 0.4);
+}
+
+/* Hover Effect for Button */
+.clickifyr-contact-button:hover {
+  background: linear-gradient(135deg, #5a47d6 0%, #9f7aea 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(116, 98, 255, 0.5);
+}
+
+.clickifyr-contact-button:active {
+  transform: translateY(0);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .clickifyr-header-container {
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px;
+  }
+  
+  .clickifyr-logo-section,
+  .clickifyr-navigation,
+  .clickifyr-button-section {
+    flex: none;
+  }
+  
+  .clickifyr-nav-list {
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .clickifyr-logo-text {
+    text-align: center;
+    font-size: 20px;
+  }
+
+  .clickifyr-logo-image {
+    width: 35px;
+    height: 35px;
+  }
+}

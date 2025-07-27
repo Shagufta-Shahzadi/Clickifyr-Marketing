@@ -7,7 +7,7 @@ import Aboutus from './Pages/Aboutus';
 
 function App() {
   // 🎯 DEFAULT PAGE SETTING - Change this to set your default page
-  const DEFAULT_PAGE = '/Aboutus'; // Options: '/home', '/about'
+  const DEFAULT_PAGE = '/Home'; // Options: '/home', '/about'
 
   return (
     <Router>

@@ -1,6 +1,6 @@
 import React from 'react';
 import './Aboutus.css';
-import Header from '../Components/Header'; // Import your existing header
+import Header from '../Components/Header2'; // Import your existing header
 import Footer from '../Components/Footer'; // Import your existing footer
 
 const Aboutus = () => {

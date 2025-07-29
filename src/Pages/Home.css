@@ -65,7 +65,7 @@
 .clickifyr-nav {
   display: flex;
   align-items: center;
-  gap: 30px;
+  gap: 18px; /* Gap kam kar diya (pehle 30px tha) */
 }
 
 /* Updated Navigation Link Styles for Buttons */
@@ -336,7 +336,7 @@
   }
   
   .clickifyr-nav {
-    gap: 20px;
+    gap: 12px; /* Tablet/mobile par aur kam gap */
   }
   
   .clickifyr-header-container {
@@ -361,7 +361,7 @@
   }
   
   .clickifyr-nav {
-    gap: 15px;
+    gap: 8px; /* Mobile par sabse kam gap */
   }
   
   .clickifyr-nav-link {
@@ -371,5 +371,73 @@
   
   .clickifyr-logo-img {
     height: 140px;
+  }
+}
+
+/* Responsive Header Only */
+@media (max-width: 900px) {
+  .clickifyr-header-container {
+    padding: 0 10px;
+    height: 50px;
+  }
+  .clickifyr-logo-img {
+    height: 100px;
+  }
+  .clickifyr-nav {
+    gap: 16px;
+  }
+}
+
+@media (max-width: 600px) {
+  .clickifyr-header-container {
+    flex-direction: column;
+    align-items: flex-start;
+    height: auto;
+    gap: 6px;
+    padding: 0 6px;
+  }
+  .clickifyr-logo {
+    margin-bottom: 2px;
+    justify-content: flex-start;
+  }
+  .clickifyr-logo-img {
+    height: 60px;
+  }
+  .clickifyr-nav {
+    width: 100%;
+    justify-content: flex-start;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .clickifyr-nav-link {
+    font-size: 13px;
+    padding: 5px 8px 8px 8px;
+    min-width: 60px;
+    text-align: left;
+  }
+  .clickifyr-contact-btn {
+    width: 100%;
+    margin-top: 4px;
+    font-size: 13px;
+    padding: 8px 0;
+    border-radius: 20px;
+  }
+}
+
+/* Hide logo text if any, keep only image on mobile */
+@media (max-width: 400px) {
+  .clickifyr-logo-img {
+    height: 40px;
+  }
+  .clickifyr-header-container {
+    padding: 0 2px;
+  }
+  .clickifyr-nav-link {
+    font-size: 12px;
+    padding: 4px 5px 7px 5px;
+  }
+  .clickifyr-contact-btn {
+    font-size: 12px;
+    padding: 7px 0;
   }
 }

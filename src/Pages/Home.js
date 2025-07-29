@@ -48,7 +48,6 @@ const Home = () => {
               style={{ cursor: 'pointer' }}
             />
           </div>
-                   
           <nav className="clickifyr-nav">
             <button 
               className={`clickifyr-nav-link ${isActivePage('/') ? 'active' : ''}`}
@@ -81,13 +80,11 @@ const Home = () => {
               About Us
             </button>
           </nav>
-                   
           <button className="clickifyr-contact-btn">
             Contact Now
           </button>
         </div>
       </header>
-           
       {/* Main Content */}
       {/* Hero Section */}
       <section className="clickifyr-hero-section">
@@ -116,7 +113,6 @@ const Home = () => {
 
       <InternshipOffer/>
       <AnimatedCounter/>
-                  
       {/* Footer */}
       <Footer />
     </div>

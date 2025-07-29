@@ -1,35 +1,24 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import './Header2.css';
-import logo from '../Assests/Company Logo.png'; // Import the logo
+import logo from '../Assests/Company Logo.png';
 
 const Header2 = () => {
-  const [activeLink, setActiveLink] = useState('Home');
+  const navigate = useNavigate();
+  const location = useLocation();
 
-  const handleLinkClick = (linkName, sectionId) => {
-    setActiveLink(linkName);
-    
-    // Smooth scroll to section
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ 
-        behavior: 'smooth',
-        block: 'start'
-      });
+  const handleLinkClick = (path) => {
+    if (location.pathname !== path) {
+      navigate(path);
     }
   };
 
   const handleContactClick = () => {
-    // Scroll to contact section or open contact modal
-    const contactElement = document.getElementById('contact');
-    if (contactElement) {
-      contactElement.scrollIntoView({ 
-        behavior: 'smooth',
-        block: 'start'
-      });
-    } else {
-      // If no contact section, you can add modal logic here
-      alert('Contact functionality - you can add modal or redirect logic here');
-    }
+    // You can scroll to contact section or open a modal here
+    // For now, redirect to contact page if exists, else show alert
+    navigate('/contact');
+    // If you don't have a contact page, use alert:
+    // alert('Contact functionality - you can add modal or redirect logic here');
   };
 
   return (
@@ -37,66 +26,64 @@ const Header2 = () => {
       <div className="header2-content-wrapper">
         {/* Logo Section */}
         <div className="header2-brand-section">
-          <img src={logo} alt="Clickifyr Marketing" className="header2-brand-logo" />
+          <img
+            src={logo}
+            alt="Clickifyr Marketing"
+            className="header2-brand-logo"
+            style={{ cursor: 'pointer' }}
+            onClick={() => handleLinkClick('/home')}
+          />
         </div>
 
         {/* Navigation Menu */}
         <nav className="header2-menu-container">
           <ul className="header2-menu-list">
             <li className="header2-menu-item">
-              <a
-                href="#home"
-                className={`header2-menu-link ${activeLink === 'Home' ? 'header2-menu-link-current' : ''}`}
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleLinkClick('Home', 'home');
-                }}
+              <button
+                className={`header2-menu-link ${location.pathname === '/home' ? 'header2-menu-link-current' : ''}`}
+                onClick={() => handleLinkClick('/home')}
               >
                 Home
-              </a>
+              </button>
             </li>
             <li className="header2-menu-item">
-              <a
-                href="#about"
-                className={`header2-menu-link ${activeLink === 'About Us' ? 'header2-menu-link-current' : ''}`}
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleLinkClick('About Us', 'about');
-                }}
-              >
-                About Us
-              </a>
-            </li>
-            <li className="header2-menu-item">
-              <a
-                href="#services"
-                className={`header2-menu-link ${activeLink === 'Services' ? 'header2-menu-link-current' : ''}`}
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleLinkClick('Services', 'services');
-                }}
+              <button
+                className={`header2-menu-link ${location.pathname === '/services' ? 'header2-menu-link-current' : ''}`}
+                onClick={() => handleLinkClick('/services')}
               >
                 Services
-              </a>
+              </button>
             </li>
             <li className="header2-menu-item">
-              <a
-                href="#privacy"
-                className={`header2-menu-link ${activeLink === 'Privacy Policy' ? 'header2-menu-link-current' : ''}`}
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleLinkClick('Privacy Policy', 'privacy');
-                }}
+              <button
+                className={`header2-menu-link ${location.pathname === '/internships' ? 'header2-menu-link-current' : ''}`}
+                onClick={() => handleLinkClick('/internships')}
               >
-                Privacy Policy
-              </a>
+                Internships
+              </button>
+            </li>
+            <li className="header2-menu-item">
+              <button
+                className={`header2-menu-link ${location.pathname === '/courses' ? 'header2-menu-link-current' : ''}`}
+                onClick={() => handleLinkClick('/courses')}
+              >
+                Courses
+              </button>
+            </li>
+            <li className="header2-menu-item">
+              <button
+                className={`header2-menu-link ${location.pathname === '/Aboutus' ? 'header2-menu-link-current' : ''}`}
+                onClick={() => handleLinkClick('/Aboutus')}
+              >
+                About Us
+              </button>
             </li>
           </ul>
         </nav>
 
         {/* Contact Button */}
         <div className="header2-action-section">
-          <button 
+          <button
             className="header2-contact-btn"
             onClick={handleContactClick}
           >

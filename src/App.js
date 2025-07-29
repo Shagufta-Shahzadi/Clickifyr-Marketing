@@ -4,6 +4,9 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 // Pages import - Currently available pages
 import Home from './Pages/Home';
 import Aboutus from './Pages/Aboutus';
+import Services from './Pages/Services';
+import Internships from './Pages/Internships';
+import Courses from './Pages/Courses'; 
 
 function App() {
   // 🎯 DEFAULT PAGE SETTING - Change this to set your default page
@@ -19,6 +22,9 @@ function App() {
           {/* ✅ Available page routes */}
           <Route path="/home" element={<Home />} />
           <Route path="/Aboutus" element={<Aboutus />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/internships" element={<Internships />} />
+          <Route path="/courses" element={<Courses />} /> 
           
           {/* ✅ Fallback route - Any unknown route redirects to default page */}
           <Route path="*" element={<Navigate to={DEFAULT_PAGE} replace />} />

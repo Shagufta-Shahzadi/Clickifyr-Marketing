@@ -1,9 +1,37 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import './InternshipOffer.css';
 import internshipImage from '../Assests/Internshipoffer.png';
 import { internshipPrograms } from '../Data/internshipPrograms';
 
 const InternshipOffer = () => {
+  const bannerRef = useRef(null);
+  const cardsRef = useRef([]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-in');
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    // Observe banner
+    if (bannerRef.current) {
+      observer.observe(bannerRef.current);
+    }
+
+    // Observe cards
+    cardsRef.current.forEach((card) => {
+      if (card) observer.observe(card);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   const handleViewMore = () => {
     console.log('Navigate to all programs page');
   };
@@ -17,99 +45,79 @@ const InternshipOffer = () => {
 
   return (
     <>
-      <div className="internshipoffer-container">
-        <div className="internshipoffer-content">
-          <div className="internshipoffer-left">
-            <div className="internshipoffer-badge">
+      <div className="internship-main-container" ref={bannerRef}>
+        <div className="internship-hero-content">
+          <div className="internship-hero-left">
+            <div className="internship-hero-badge">
               Powered by Digital Marketing Excellence
             </div>
             
-            <h1 className="internshipoffer-title">
+            <h1 className="internship-hero-title">
               Internship programs for
               <br />
-              <span className="internshipoffer-highlight">digital marketing,</span> web
+              <span className="internship-hero-highlight">digital marketing,</span> web
               <br />
               development & design
             </h1>
             
-            <p className="internshipoffer-subtitle">
+            <p className="internship-hero-subtitle">
               Join Clickifyr Marketing for hands-on experience in digital evolution - 
               gain practical skills, mentorship, and real-world project exposure.
             </p>
             
-            <button className="internshipoffer-cta">
+            <button className="internship-hero-cta">
               Apply Now
-              <span className="internshipoffer-arrow">→</span>
+              <span className="internship-hero-arrow">→</span>
             </button>
           </div>
           
-          <div className="internshipoffer-right">
-            <div className="internshipoffer-image-container">
+          <div className="internship-hero-right">
+            <div className="internship-hero-image-container">
               <img
                 src={internshipImage}
                 alt="Internship Program"
-                className="internshipoffer-main-image"
+                className="internship-hero-main-image"
               />
-              
-              <div className="internshipoffer-overlay-elements">
-                <div className="internshipoffer-circle-decoration internshipoffer-circle-top">
-                  <div className="internshipoffer-circle-inner"></div>
-                </div>
-                
-                <div className="internshipoffer-collaboration-badge">
-                  <span className="internshipoffer-collaboration-text">Best Collaboration</span>
-                  <div className="internshipoffer-collaboration-icon">💼</div>
-                </div>
-                
-                <div className="internshipoffer-stats-card">
-                  <div className="internshipoffer-stats-number">69,528+</div>
-                  <div className="internshipoffer-stats-text">People are learning</div>
-                  <div className="internshipoffer-stats-icons">
-                    <span className="internshipoffer-user-icon">👥</span>
-                    <span className="internshipoffer-growth-icon">📈</span>
-                  </div>
-                </div>
-                
-                <div className="internshipoffer-orange-shape"></div>
-                <div className="internshipoffer-yellow-curve"></div>
-              </div>
             </div>
           </div>
         </div>
       </div>
 
       {/* Programs Section */}
-      <div className="internshipoffer-programs-section">
-        <div className="internshipoffer-programs-header">
-          <h2 className="internshipoffer-programs-title">
-            Our <span className="internshipoffer-highlight">Free</span> Internship Programs
+      <div className="internship-programs-wrapper">
+        <div className="internship-programs-header">
+          <h2 className="internship-programs-main-title">
+            Our <span className="internship-hero-highlight">Free</span> Internship Programs
           </h2>
-          <p className="internshipoffer-programs-subtitle">
+          <p className="internship-programs-main-subtitle">
             Start your career journey with our comprehensive free internship programs
           </p>
         </div>
 
-        <div className="internshipoffer-programs-grid">
+        <div className="internship-program-cards-grid">
           {internshipPrograms && internshipPrograms.length > 0 ? (
-            internshipPrograms.map((program) => (
-              <div key={program.id} className="internshipoffer-program-card">
-                <div className="internshipoffer-program-image">
+            internshipPrograms.map((program, index) => (
+              <div 
+                key={program.id} 
+                className="internship-program-single-card"
+                ref={(el) => (cardsRef.current[index] = el)}
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <div className="internship-program-card-image">
                   <img src={program.image} alt={program.title} />
-                  <div className="internshipoffer-program-badge">FREE</div>
+                  <div className="internship-program-card-badge">FREE</div>
                 </div>
                 
-                <div className="internshipoffer-program-content">
-                  <h3 className="internshipoffer-program-title">{program.title}</h3>
+                <div className="internship-program-card-content">
+                  <h3 className="internship-program-card-title">{program.title}</h3>
                   
-                  <div className="internshipoffer-program-footer">
-                    <div className="internshipoffer-program-duration">
+                  <div className="internship-program-card-footer">
+                    <div className="internship-program-card-duration">
                       📅 {program.duration}
                     </div>
-                    <div className="internshipoffer-program-actions">
-                     
-                   
+                    <div className="internship-program-card-actions">
                       <button 
-                        className="internshipoffer-enroll-btn"
+                        className="internship-program-enroll-button"
                         onClick={() => handleEnrollNow(program.id)}
                       >
                         Enroll Now
@@ -126,10 +134,10 @@ const InternshipOffer = () => {
           )}
         </div>
 
-        <div className="internshipoffer-view-more">
-          <button className="internshipoffer-view-more-btn" onClick={handleViewMore}>
+        <div className="internship-programs-view-more">
+          <button className="internship-programs-view-more-button" onClick={handleViewMore}>
             View More Programs
-            <span className="internshipoffer-arrow">→</span>
+            <span className="internship-hero-arrow">→</span>
           </button>
         </div>
       </div>

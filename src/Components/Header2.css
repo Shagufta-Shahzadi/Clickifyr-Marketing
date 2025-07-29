@@ -1,11 +1,35 @@
+/* Force hide Header2 on home page */
+.home-page .header2-main-container {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  height: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Ensure home page doesn't have body padding when Header2 is hidden */
+
+
 /* Header2 Main Styles */
 .header2-main-container {
   background-color: white;
   padding: 0;
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
   z-index: 1000;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+/* Add scrolled state for better UX */
+.header2-main-container.scrolled {
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
 }
 
 .header2-content-wrapper {
@@ -16,6 +40,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 15px 15px;
+
 }
 
 /* Brand/Logo Section */
@@ -67,7 +92,7 @@
   list-style: none;
   margin: 0;
   padding: 0;
-  gap: 40px;
+  gap: 30px;
 }
 
 .header2-menu-item {
@@ -93,7 +118,7 @@
 .header2-menu-link::after {
   content: '';
   position: absolute;
-  bottom: -5px;
+  bottom: -2px;
   left: 0;
   width: 0;
   height: 2px;
@@ -154,12 +179,13 @@
   padding: 8px 30px;
   border-radius: 25px;
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 400;
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 4px 15px rgba(116, 98, 255, 0.4);
   position: relative;
   overflow: hidden;
+  margin-right: -30px;
 }
 
 /* Hover Effect for Button */
@@ -195,43 +221,77 @@
 }
 
 /* Responsive Design */
+
+/* Large Tablets and Small Desktops */
+@media (max-width: 1200px) {
+  .header2-content-wrapper {
+    max-width: 100%;
+    padding: 15px 25px;
+  }
+  
+  .header2-menu-list {
+    gap: 25px;
+  }
+}
+
+/* Tablets */
 @media (max-width: 1024px) {
   .header2-content-wrapper {
     padding: 15px 20px;
   }
   
   .header2-menu-list {
-    gap: 30px;
+    gap: 20px;
   }
   
   .header2-brand-logo {
-    width: 150px;
+    width: 140px;
+  }
+  
+  .header2-menu-link {
+    font-size: 15px;
+  }
+  
+  .header2-contact-btn {
+    padding: 8px 24px;
+    font-size: 15px;
   }
 }
 
+/* Small Tablets */
 @media (max-width: 768px) {
+  .header2-main-container {
+    position: fixed;
+  }
+  
   .header2-content-wrapper {
-    flex-direction: column;
-    gap: 15px;
-    padding: 15px;
     height: auto;
+    min-height: 70px;
+    padding: 12px 15px;
+    flex-wrap: wrap;
+    justify-content: space-between;
   }
 
-  .header2-brand-section,
-  .header2-menu-container,
+  .header2-brand-section {
+    flex: 0 0 auto;
+    order: 1;
+  }
+
   .header2-action-section {
-    flex: none;
+    flex: 0 0 auto;
+    order: 2;
+  }
+
+  .header2-menu-container {
+    flex: 1 1 100%;
+    order: 3;
+    margin-top: 10px;
   }
 
   .header2-menu-list {
-    gap: 20px;
+    gap: 15px;
     flex-wrap: wrap;
     justify-content: center;
-  }
-
-  .header2-brand-text {
-    text-align: center;
-    font-size: 20px;
   }
 
   .header2-brand-logo {
@@ -240,17 +300,49 @@
   
   .header2-menu-link {
     font-size: 14px;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+  }
+  
+  .header2-menu-link:hover {
+    background: rgba(116, 98, 255, 0.1);
   }
   
   .header2-contact-btn {
-    padding: 8px 25px;
+    padding: 8px 20px;
     font-size: 14px;
+    white-space: nowrap;
   }
 }
 
+/* Mobile Devices */
 @media (max-width: 480px) {
+  /* Only apply body padding when NOT on home page */
+  body:not(.home-page) {
+    padding-top: 120px;
+  }
+  
+  .header2-content-wrapper {
+    padding: 10px 12px;
+    min-height: 110px;
+  }
+  
+  .header2-brand-section {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  
+  .header2-action-section {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  
   .header2-menu-list {
-    gap: 15px;
+    gap: 8px;
+    margin-top: 8px;
   }
   
   .header2-brand-logo {
@@ -259,12 +351,68 @@
   
   .header2-menu-link {
     font-size: 13px;
-    padding: 8px 0;
+    padding: 6px 10px;
   }
   
   .header2-contact-btn {
-    padding: 6px 20px;
+    padding: 6px 16px;
     font-size: 13px;
+    border-radius: 20px;
+  }
+}
+
+/* Extra Small Mobile */
+@media (max-width: 360px) {
+  .header2-content-wrapper {
+    padding: 8px 10px;
+  }
+  
+  .header2-brand-logo {
+    width: 80px;
+  }
+  
+  .header2-menu-list {
+    gap: 6px;
+  }
+  
+  .header2-menu-link {
+    font-size: 12px;
+    padding: 5px 8px;
+  }
+  
+  .header2-contact-btn {
+    padding: 5px 12px;
+    font-size: 12px;
+  }
+}
+
+/* Landscape orientation for mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+  .header2-content-wrapper {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    min-height: 60px;
+  }
+  
+  .header2-menu-container {
+    order: 2;
+    flex: 1;
+    margin-top: 0;
+    margin: 0 20px;
+  }
+  
+  .header2-menu-list {
+    gap: 15px;
+    margin-top: 0;
+  }
+  
+  .header2-action-section {
+    order: 3;
+  }
+  
+  /* Only apply body padding when NOT on home page */
+  body:not(.home-page) {
+    padding-top: 80px;
   }
 }
 
@@ -310,4 +458,23 @@ html {
   content: attr(alt);
   color: #7462ff;
   font-weight: bold;
+}
+
+/* Body adjustment for fixed header - only when NOT on home page */
+body:not(.home-page) {
+  padding-top: 90px;
+}
+
+/* Page container adjustment */
+.page-container:not(.home-page),
+.contact-page,
+.main-page,
+.services-page {
+  padding-top: 0;
+}
+
+/* Hero sections adjustment - but NOT for home page hero */
+.hero-section:not(.clickifyr-hero-section) {
+  margin-top: -90px;
+  padding-top: 90px;
 }

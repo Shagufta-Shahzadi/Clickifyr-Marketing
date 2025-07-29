@@ -9,10 +9,14 @@ import AnimatedCounter from '../Components/AnimatedCounter';
 
 const Home = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
 
   useEffect(() => {
+    // Add home-page class to body
+    document.body.classList.add('home-page');
+    
     const handleScroll = () => {
       const scrollTop = window.scrollY;
       const heroSection = document.querySelector('.clickifyr-hero-section');
@@ -21,12 +25,18 @@ const Home = () => {
     };
 
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    
+    // Cleanup function
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      document.body.classList.remove('home-page');
+    };
   }, []);
 
   // Handle navigation to different pages
   const handleNavigation = (path) => {
     navigate(path);
+    setIsMobileMenuOpen(false); // Close mobile menu after navigation
   };
 
   // Check if current path is active
@@ -34,57 +44,123 @@ const Home = () => {
     return location.pathname === path;
   };
 
+  // Toggle mobile menu
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
   return (
     <div className="clickifyr-home-page">
-      {/* Custom Header for Hero Section */}
-      <header className={`clickifyr-custom-header ${isScrolled ? 'scrolled' : ''}`}>
-        <div className="clickifyr-header-container">
-          <div className="clickifyr-logo">
+      {/* Custom Header for Hero Section with Unique Classes */}
+      <header className={`clickifyr-home-custom-header ${isScrolled ? 'clickifyr-home-header-scrolled' : ''}`}>
+        <div className="clickifyr-home-header-container">
+          <div className="clickifyr-home-logo-section">
             <img
               src={logo}
               alt="Clickifyr Logo"
-              className="clickifyr-logo-img"
+              className="clickifyr-home-logo-image"
               onClick={() => handleNavigation('/')}
               style={{ cursor: 'pointer' }}
             />
           </div>
-          <nav className="clickifyr-nav">
+
+          {/* Desktop Navigation */}
+          <nav className="clickifyr-home-desktop-nav">
             <button 
-              className={`clickifyr-nav-link ${isActivePage('/') ? 'active' : ''}`}
+              className={`clickifyr-home-nav-button ${isActivePage('/') ? 'clickifyr-home-nav-active' : ''}`}
               onClick={() => handleNavigation('/')}
             >
               Home
             </button>
             <button 
-              className={`clickifyr-nav-link ${isActivePage('/services') ? 'active' : ''}`}
+              className={`clickifyr-home-nav-button ${isActivePage('/services') ? 'clickifyr-home-nav-active' : ''}`}
               onClick={() => handleNavigation('/services')}
             >
               Services
             </button>
             <button 
-              className={`clickifyr-nav-link ${isActivePage('/internships') ? 'active' : ''}`}
+              className={`clickifyr-home-nav-button ${isActivePage('/internships') ? 'clickifyr-home-nav-active' : ''}`}
               onClick={() => handleNavigation('/internships')}
             >
               Internships
             </button>
             <button 
-              className={`clickifyr-nav-link ${isActivePage('/courses') ? 'active' : ''}`}
+              className={`clickifyr-home-nav-button ${isActivePage('/courses') ? 'clickifyr-home-nav-active' : ''}`}
               onClick={() => handleNavigation('/courses')}
             >
               Courses
             </button>
             <button 
-              className={`clickifyr-nav-link ${isActivePage('/about') ? 'active' : ''}`}
+              className={`clickifyr-home-nav-button ${isActivePage('/about') ? 'clickifyr-home-nav-active' : ''}`}
               onClick={() => handleNavigation('/Aboutus')}
             >
               About Us
             </button>
           </nav>
-          <button className="clickifyr-contact-btn">
+
+          {/* Desktop Contact Button */}
+          <button 
+            className="clickifyr-home-contact-button clickifyr-home-desktop-contact"
+            onClick={() => handleNavigation('/ContactUs')}
+          >
             Contact Now
           </button>
+
+          {/* Mobile Menu Toggle */}
+          <button 
+            className="clickifyr-home-mobile-menu-toggle"
+            onClick={toggleMobileMenu}
+            aria-label="Toggle Menu"
+          >
+            <span className={`clickifyr-home-hamburger-line ${isMobileMenuOpen ? 'clickifyr-home-line-active' : ''}`}></span>
+            <span className={`clickifyr-home-hamburger-line ${isMobileMenuOpen ? 'clickifyr-home-line-active' : ''}`}></span>
+            <span className={`clickifyr-home-hamburger-line ${isMobileMenuOpen ? 'clickifyr-home-line-active' : ''}`}></span>
+          </button>
+        </div>
+
+        {/* Mobile Navigation Menu */}
+        <div className={`clickifyr-home-mobile-nav ${isMobileMenuOpen ? 'clickifyr-home-mobile-nav-open' : ''}`}>
+          <div className="clickifyr-home-mobile-nav-content">
+            <button 
+              className={`clickifyr-home-mobile-nav-button ${isActivePage('/') ? 'clickifyr-home-mobile-nav-active' : ''}`}
+              onClick={() => handleNavigation('/')}
+            >
+              Home
+            </button>
+            <button 
+              className={`clickifyr-home-mobile-nav-button ${isActivePage('/services') ? 'clickifyr-home-mobile-nav-active' : ''}`}
+              onClick={() => handleNavigation('/services')}
+            >
+              Services
+            </button>
+            <button 
+              className={`clickifyr-home-mobile-nav-button ${isActivePage('/internships') ? 'clickifyr-home-mobile-nav-active' : ''}`}
+              onClick={() => handleNavigation('/internships')}
+            >
+              Internships
+            </button>
+            <button 
+              className={`clickifyr-home-mobile-nav-button ${isActivePage('/courses') ? 'clickifyr-home-mobile-nav-active' : ''}`}
+              onClick={() => handleNavigation('/courses')}
+            >
+              Courses
+            </button>
+            <button 
+              className={`clickifyr-home-mobile-nav-button ${isActivePage('/about') ? 'clickifyr-home-mobile-nav-active' : ''}`}
+              onClick={() => handleNavigation('/Aboutus')}
+            >
+              About Us
+            </button>
+            <button 
+              className="clickifyr-home-contact-button clickifyr-home-mobile-contact"
+              onClick={() => handleNavigation('/ContactUs')}
+            >
+              Contact Now
+            </button>
+          </div>
         </div>
       </header>
+
       {/* Main Content */}
       {/* Hero Section */}
       <section className="clickifyr-hero-section">

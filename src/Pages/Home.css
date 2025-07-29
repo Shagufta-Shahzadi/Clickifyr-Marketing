@@ -5,8 +5,8 @@
   overflow-x: hidden;
 }
 
-/* Custom Header */
-.clickifyr-custom-header {
+/* Custom Header with Unique Classes */
+.clickifyr-home-custom-header {
   position: fixed;
   top: 0;
   left: 0;
@@ -18,29 +18,31 @@
   z-index: 1000;
 }
 
-.clickifyr-custom-header.scrolled {
+.clickifyr-home-custom-header.clickifyr-home-header-scrolled {
   background: rgba(255, 255, 255, 0.95);
 }
 
-.clickifyr-header-container {
+.clickifyr-home-header-container {
   max-width: 1400px;
   margin: 0 auto;
   padding: 0 30px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 45px;
+  height: 60px;
+  position: relative;
 }
 
-.clickifyr-logo {
+.clickifyr-home-logo-section {
   display: flex;
   align-items: center;
   opacity: 0;
-  animation: logoFadeIn 0.5s ease-out 0.1s forwards;
+  animation: clickifyr-home-logo-fade-in 0.5s ease-out 0.1s forwards;
+  z-index: 1001;
 }
 
-/* Logo animation for faster loading */
-@keyframes logoFadeIn {
+/* Logo animation */
+@keyframes clickifyr-home-logo-fade-in {
   from {
     opacity: 0;
     transform: translateY(-10px);
@@ -51,25 +53,26 @@
   }
 }
 
-.clickifyr-logo-img {
-  height: 170px;
+.clickifyr-home-logo-image {
+  height: 200px;
   width: auto;
   transition: all 0.3s ease;
   cursor: pointer;
 }
 
-.clickifyr-logo-img:hover {
+.clickifyr-home-logo-image:hover {
   opacity: 0.8;
 }
 
-.clickifyr-nav {
+/* Desktop Navigation */
+.clickifyr-home-desktop-nav {
   display: flex;
   align-items: center;
-  gap: 18px; /* Gap kam kar diya (pehle 30px tha) */
+  gap: 10px;
+  margin-left: -40px;
 }
 
-/* Updated Navigation Link Styles for Buttons */
-.clickifyr-nav-link {
+.clickifyr-home-nav-button {
   background: none;
   border: none;
   font-size: 16px;
@@ -81,15 +84,14 @@
   transition: all 0.3s ease;
   position: relative;
   padding: 8px 16px;
-  padding-bottom: 12px;
   border-radius: 0;
 }
 
-/* Hover effect underline for hero section (white) */
-.clickifyr-nav-link::after {
+/* Hover effect underline */
+.clickifyr-home-nav-button::after {
   content: '';
   position: absolute;
-  bottom: 4px;
+  bottom: 0;
   left: 50%;
   transform: translateX(-50%);
   width: 0;
@@ -98,82 +100,174 @@
   transition: width 0.3s ease;
 }
 
-.clickifyr-nav-link:hover::after {
+.clickifyr-home-nav-button:hover::after {
   width: 80%;
 }
 
-.clickifyr-nav-link:hover {
+.clickifyr-home-nav-button:hover {
   color: white;
-  background: none;
 }
 
-.clickifyr-nav-link:focus {
+.clickifyr-home-nav-button:focus {
   outline: none;
 }
 
-/* Active link styling for hero section */
-.clickifyr-nav-link.active {
+/* Active link styling */
+.clickifyr-home-nav-button.clickifyr-home-nav-active {
   color: white;
   font-weight: 600;
 }
 
-.clickifyr-nav-link.active::after {
+.clickifyr-home-nav-button.clickifyr-home-nav-active::after {
   width: 80%;
   background: white;
 }
 
 /* Scrolled header styles */
-.clickifyr-custom-header.scrolled .clickifyr-nav-link {
+.clickifyr-home-custom-header.clickifyr-home-header-scrolled .clickifyr-home-nav-button {
   color: #333;
 }
 
-.clickifyr-custom-header.scrolled .clickifyr-nav-link:hover {
+.clickifyr-home-custom-header.clickifyr-home-header-scrolled .clickifyr-home-nav-button:hover {
   color: #8b5cf6;
-  background: none;
 }
 
-.clickifyr-custom-header.scrolled .clickifyr-nav-link::after {
+.clickifyr-home-custom-header.clickifyr-home-header-scrolled .clickifyr-home-nav-button::after {
   background: #8b5cf6;
 }
 
-.clickifyr-custom-header.scrolled .clickifyr-nav-link.active {
+.clickifyr-home-custom-header.clickifyr-home-header-scrolled .clickifyr-home-nav-button.clickifyr-home-nav-active {
   color: #8b5cf6;
   font-weight: 600;
 }
 
-.clickifyr-custom-header.scrolled .clickifyr-nav-link.active::after {
+.clickifyr-home-custom-header.clickifyr-home-header-scrolled .clickifyr-home-nav-button.clickifyr-home-nav-active::after {
   background: #8b5cf6;
 }
 
-.clickifyr-contact-btn {
+/* Contact Button */
+.clickifyr-home-contact-button {
   background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
   color: white;
   border: none;
-  padding: 10px 30px;
+  padding: 12px 24px;
   border-radius: 25px;
   font-size: 14px;
-  font-weight: 400;
+  font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+  white-space: nowrap;
 }
 
-.clickifyr-contact-btn:hover {
+.clickifyr-home-contact-button:hover {
   background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(139, 92, 246, 0.4);
 }
 
-.clickifyr-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
+/* Mobile Menu Toggle Button */
+.clickifyr-home-mobile-menu-toggle {
+  display: none;
+  flex-direction: column;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  z-index: 1002;
+}
+
+.clickifyr-home-hamburger-line {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  margin: 2px 0;
+  transition: all 0.3s ease;
+  border-radius: 2px;
+}
+
+.clickifyr-home-custom-header.clickifyr-home-header-scrolled .clickifyr-home-hamburger-line {
+  background-color: #333;
+}
+
+/* Hamburger Animation */
+.clickifyr-home-hamburger-line.clickifyr-home-line-active:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.clickifyr-home-hamburger-line.clickifyr-home-line-active:nth-child(2) {
+  opacity: 0;
+}
+
+.clickifyr-home-hamburger-line.clickifyr-home-line-active:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -6px);
+}
+
+/* Mobile Navigation Menu */
+.clickifyr-home-mobile-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(10px);
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  z-index: 999;
+  display: none;
+}
+
+.clickifyr-home-mobile-nav.clickifyr-home-mobile-nav-open {
+  transform: translateX(0);
+}
+
+.clickifyr-home-mobile-nav-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 30px;
+  padding: 20px;
+}
+
+.clickifyr-home-mobile-nav-button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 15px 30px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  width: 100%;
+  max-width: 250px;
+  text-align: center;
+}
+
+.clickifyr-home-mobile-nav-button:hover {
+  background: rgba(139, 92, 246, 0.2);
+  color: #8b5cf6;
+}
+
+.clickifyr-home-mobile-nav-button.clickifyr-home-mobile-nav-active {
+  background: rgba(139, 92, 246, 0.3);
+  color: #8b5cf6;
+  font-weight: 600;
+}
+
+.clickifyr-home-mobile-contact {
+  margin-top: 20px;
+  width: 100%;
+  max-width: 250px;
 }
 
 /* Hero Section */
 .clickifyr-hero-section {
-    background-image: url('https://images.unsplash.com/photo-1560179707-f14e90ef3623?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Y29tcGFueXxlbnwwfHwwfHx8MA%3D%3D');
-    background-size: cover;
+  background-image: url('https://images.unsplash.com/photo-1560179707-f14e90ef3623?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Y29tcGFueXxlbnwwfHwwfHx8MA%3D%3D');
+  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   padding: 10px 0 10px;
@@ -219,7 +313,7 @@
   line-height: 1.2;
   letter-spacing: -0.02em;
   text-align: center;
-    margin-top: -20px;
+  margin-top: -20px;
 }
 
 .clickifyr-hero-title .highlight {
@@ -271,20 +365,52 @@
   box-shadow: 0 6px 20px rgba(139, 92, 246, 0.4);
 }
 
-/* Animation for scroll-triggered elements */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
+/* Responsive Design */
+
+/* Tablet Styles */
+@media (max-width: 1024px) {
+  .clickifyr-home-header-container {
+    padding: 0 20px;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  
+  .clickifyr-home-desktop-nav {
+    gap: 20px;
+  }
+  
+  .clickifyr-home-nav-button {
+    font-size: 15px;
+    padding: 6px 12px;
   }
 }
 
-/* Responsive Design */
+/* Mobile Styles */
 @media (max-width: 768px) {
+  .clickifyr-home-header-container {
+    padding: 0 15px;
+    height: 70px;
+  }
+  
+  .clickifyr-home-logo-image {
+    height: 45px;
+  }
+  
+  /* Hide desktop navigation */
+  .clickifyr-home-desktop-nav,
+  .clickifyr-home-desktop-contact {
+    display: none;
+  }
+  
+  /* Show mobile menu toggle */
+  .clickifyr-home-mobile-menu-toggle {
+    display: flex;
+  }
+  
+  /* Show mobile navigation */
+  .clickifyr-home-mobile-nav {
+    display: block;
+  }
+  
+  /* Hero section adjustments */
   .clickifyr-hero-container {
     padding: 0 20px;
     text-align: center;
@@ -292,6 +418,40 @@
   
   .clickifyr-hero-content {
     max-width: 100%;
+    margin-top: 40px;
+  }
+  
+  .clickifyr-hero-title {
+    font-size: 42px;
+  }
+  
+  .clickifyr-hero-description {
+    font-size: 15px;
+  }
+  
+  .clickifyr-hero-section {
+    padding: 80px 0;
+    min-height: 80vh;
+  }
+}
+
+/* Small Mobile Styles */
+@media (max-width: 480px) {
+  .clickifyr-home-header-container {
+    padding: 0 10px;
+    height: 60px;
+  }
+  
+  .clickifyr-home-logo-image {
+    height: 40px;
+  }
+  
+  .clickifyr-home-hamburger-line {
+    width: 22px;
+  }
+  
+  .clickifyr-hero-container {
+    padding: 0 15px;
   }
   
   .clickifyr-hero-title {
@@ -302,142 +462,71 @@
     font-size: 14px;
   }
   
-  .clickifyr-section-title {
+  .clickifyr-hero-section {
+    padding: 60px 0;
+    min-height: 70vh;
+  }
+  
+  .clickifyr-home-mobile-nav-content {
+    gap: 25px;
+    padding: 15px;
+  }
+  
+  .clickifyr-home-mobile-nav-button {
+    font-size: 16px;
+    padding: 12px 25px;
+  }
+}
+
+/* Extra Small Mobile Styles */
+@media (max-width: 320px) {
+  .clickifyr-home-header-container {
+    padding: 0 8px;
+    height: 55px;
+  }
+  
+  .clickifyr-home-logo-image {
+    height: 35px;
+  }
+  
+  .clickifyr-hero-title {
     font-size: 28px;
   }
   
-  .clickifyr-services-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .clickifyr-about-content {
-    grid-template-columns: 1fr;
-    gap: 40px;
-    text-align: center;
-  }
-  
-  .clickifyr-about-text {
-    padding-right: 0;
-  }
-  
-  .clickifyr-team-image {
-    width: 300px;
-    height: 200px;
-  }
-  
-  .clickifyr-hero-section {
-    padding: 80px 0;
-    min-height: 500px;
-  }
-  
-  .clickifyr-services-preview,
-  .clickifyr-about-preview {
-    padding: 60px 0;
-  }
-  
-  .clickifyr-nav {
-    gap: 12px; /* Tablet/mobile par aur kam gap */
-  }
-  
-  .clickifyr-header-container {
-    padding: 0 20px;
-  }
-  
-  /* Mobile navigation adjustments */
-  .clickifyr-nav-link {
-    font-size: 14px;
-    padding: 6px 12px;
-  }
-}
-
-@media (max-width: 480px) {
-  .clickifyr-hero-title {
-    font-size: 36px;
-  }
-  
-  .clickifyr-hero-section {
-    padding: 60px 0;
-    min-height: 400px;
-  }
-  
-  .clickifyr-nav {
-    gap: 8px; /* Mobile par sabse kam gap */
-  }
-  
-  .clickifyr-nav-link {
+  .clickifyr-hero-description {
     font-size: 13px;
-    padding: 5px 10px;
   }
   
-  .clickifyr-logo-img {
-    height: 140px;
+  .clickifyr-home-mobile-nav-content {
+    gap: 20px;
+  }
+  
+  .clickifyr-home-mobile-nav-button {
+    font-size: 15px;
+    padding: 10px 20px;
   }
 }
 
-/* Responsive Header Only */
-@media (max-width: 900px) {
-  .clickifyr-header-container {
-    padding: 0 10px;
-    height: 50px;
-  }
-  .clickifyr-logo-img {
-    height: 100px;
-  }
-  .clickifyr-nav {
-    gap: 16px;
-  }
-}
-
-@media (max-width: 600px) {
-  .clickifyr-header-container {
-    flex-direction: column;
-    align-items: flex-start;
-    height: auto;
-    gap: 6px;
-    padding: 0 6px;
-  }
-  .clickifyr-logo {
-    margin-bottom: 2px;
-    justify-content: flex-start;
-  }
-  .clickifyr-logo-img {
+/* Landscape Mobile Orientation */
+@media (max-width: 768px) and (orientation: landscape) {
+  .clickifyr-home-header-container {
     height: 60px;
   }
-  .clickifyr-nav {
-    width: 100%;
-    justify-content: flex-start;
-    gap: 8px;
-    flex-wrap: wrap;
-  }
-  .clickifyr-nav-link {
-    font-size: 13px;
-    padding: 5px 8px 8px 8px;
-    min-width: 60px;
-    text-align: left;
-  }
-  .clickifyr-contact-btn {
-    width: 100%;
-    margin-top: 4px;
-    font-size: 13px;
-    padding: 8px 0;
-    border-radius: 20px;
-  }
-}
-
-/* Hide logo text if any, keep only image on mobile */
-@media (max-width: 400px) {
-  .clickifyr-logo-img {
+  
+  .clickifyr-home-logo-image {
     height: 40px;
   }
-  .clickifyr-header-container {
-    padding: 0 2px;
+  
+  .clickifyr-hero-section {
+    min-height: 100vh;
+    padding: 40px 0;
   }
-  .clickifyr-nav-link {
-    font-size: 12px;
-    padding: 4px 5px 7px 5px;
+  
+  .clickifyr-hero-content {
+    margin-top: 20px;
   }
-  .clickifyr-contact-btn {
-    font-size: 12px;
-    padding: 7px 0;
+  
+  .clickifyr-hero-title {
+    font-size: 36px;
   }
 }

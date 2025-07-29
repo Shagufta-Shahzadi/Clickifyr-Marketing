@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import './Header2.css';
 import logo from '../Assests/Company Logo.png';
@@ -7,6 +7,32 @@ const Header2 = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
+  // Add scroll effect to header
+  useEffect(() => {
+    const handleScroll = () => {
+      const header = document.querySelector('.header2-main-container');
+      if (header) {
+        if (window.scrollY > 50) {
+          header.classList.add('scrolled');
+        } else {
+          header.classList.remove('scrolled');
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Debug: Check current pathname
+  console.log('Current pathname:', location.pathname);
+
+  // Don't render header on home page - check exact path
+  if (location.pathname === '/' || location.pathname === '/home') {
+    console.log('Header2 should not render on home page');
+    return null;
+  }
+
   const handleLinkClick = (path) => {
     if (location.pathname !== path) {
       navigate(path);
@@ -14,11 +40,7 @@ const Header2 = () => {
   };
 
   const handleContactClick = () => {
-    // You can scroll to contact section or open a modal here
-    // For now, redirect to contact page if exists, else show alert
-    navigate('/contact');
-    // If you don't have a contact page, use alert:
-    // alert('Contact functionality - you can add modal or redirect logic here');
+    navigate('/ContactUs');
   };
 
   return (
@@ -31,7 +53,7 @@ const Header2 = () => {
             alt="Clickifyr Marketing"
             className="header2-brand-logo"
             style={{ cursor: 'pointer' }}
-            onClick={() => handleLinkClick('/home')}
+            onClick={() => handleLinkClick('/')}
           />
         </div>
 
@@ -40,8 +62,8 @@ const Header2 = () => {
           <ul className="header2-menu-list">
             <li className="header2-menu-item">
               <button
-                className={`header2-menu-link ${location.pathname === '/home' ? 'header2-menu-link-current' : ''}`}
-                onClick={() => handleLinkClick('/home')}
+                className={`header2-menu-link ${location.pathname === '/' ? 'header2-menu-link-current' : ''}`}
+                onClick={() => handleLinkClick('/')}
               >
                 Home
               </button>

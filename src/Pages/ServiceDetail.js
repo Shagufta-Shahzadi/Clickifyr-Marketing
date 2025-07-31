@@ -4,7 +4,7 @@ import Header from '../Components/Header2';
 import Footer from '../Components/Footer';
 import { servicesDetailsData, contactInfo } from '../Data/servicesDetailsData';
 import { servicesData } from '../Data/servicesData';
-import { ArrowLeft, CheckCircle, Phone, Mail, Globe, Star } from 'lucide-react';
+import { CheckCircle, Phone, Mail, Globe, Star, } from 'lucide-react';
 import './ServiceDetail.css';
 
 const ServiceDetail = () => {
@@ -28,13 +28,14 @@ const ServiceDetail = () => {
     setLoading(false);
 
     const revealOnScroll = () => {
-      const elements = document.querySelectorAll('.servicesdetail-fadein');
+      const elements = document.querySelectorAll('.servicesdetail-fadein, .scroll-animate');
       const triggerBottom = window.innerHeight * 0.85;
       
       elements.forEach(element => {
         const elementTop = element.getBoundingClientRect().top;
         if (elementTop < triggerBottom) {
           element.classList.add('servicesdetail-visible');
+          element.classList.add('visible');
         }
       });
     };
@@ -66,7 +67,6 @@ const ServiceDetail = () => {
           <h2>Service Not Found</h2>
           <p>The requested service could not be found.</p>
           <button onClick={() => navigate('/services')} className="servicesdetail-backbtn">
-            <ArrowLeft size={20} />
             Back to Services
           </button>
         </div>
@@ -79,21 +79,19 @@ const ServiceDetail = () => {
     <div className="servicesdetail-page">
       <Header />
       
-      {/* Hero Section - Original Design Restored */}
+      {/* Hero Section with Animations */}
       <section className="servicesdetail-hero">
         <div className="servicesdetail-hero-overlay"></div>
         <div className="servicesdetail-hero-content">
-          <button onClick={() => navigate('/services')} className="servicesdetail-backbtn">
-            <ArrowLeft size={20} />
-            Back to Services
-          </button>
-          
+          <div className="servicesdetail-hero-backbtn web-only" onClick={() => navigate(-1)}>
+            &larr; Back
+          </div>
           <div className="servicesdetail-heroinfo">
-            <div className="servicesdetail-heroicon"></div>
-            <h1 className="servicesdetail-herotitle">{serviceDetail.title}</h1>
-            <p className="servicesdetail-herodesc">{serviceDetail.description}</p>
+            <div className="servicesdetail-heroicon hero-animate-icon"></div>
+            <h1 className="servicesdetail-herotitle hero-animate-title">{serviceDetail.title}</h1>
+            <p className="servicesdetail-herodesc hero-animate-desc">{serviceDetail.description}</p>
             
-            <div className="servicesdetail-pricecontainer">
+            <div className="servicesdetail-pricecontainer hero-animate-price">
               <div className="servicesdetail-pricebadge">
                 <span className="servicesdetail-price">{serviceDetail.price}</span>
                 <span className="servicesdetail-duration">{serviceDetail.duration}</span>
@@ -159,8 +157,6 @@ const ServiceDetail = () => {
                 <span>{contactInfo.website}</span>
               </a>
             </div>
-            
-           
           </div>
         </div>
       </section>

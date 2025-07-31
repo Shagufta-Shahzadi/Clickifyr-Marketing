@@ -211,7 +211,7 @@ export const servicesDetailsData = {
   "Artificial Intelligence Service": {
     title: "Artificial Intelligence Service",
     subtitle: "Smart AI-Powered Solutions",
-    price: "100,000 PKR",
+    price: "400,000 PKR",
     duration: "Monthly Charges",
     description: "Smart AI-powered solutions to improve decision-making, automation, and personalization for your business operations and customer experiences.",
     features: [

@@ -1,24 +1,78 @@
 /* VisionMission.css */
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
- 
 }
 
 .VisionMission-container {
-  font-family: 'Arial', sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6;
   color: #333;
-   margin-top: -120px;
+  margin-top: 0;
+}
+
+/* Scroll Animation Base Classes */
+.VisionMission-section {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s ease-out;
+}
+
+.VisionMission-section.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.VisionMission-section-title {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease-out;
+}
+
+.VisionMission-section-title.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.VisionMission-section-description {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: all 0.6s ease-out;
+}
+
+.VisionMission-section-description.animate-in {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.VisionMission-image {
+  opacity: 0;
+  transform: scale(0.9) translateY(30px);
+  transition: all 0.8s ease-out;
+}
+
+.VisionMission-image.animate-in {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+.VisionMission-feature-item {
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: all 0.5s ease-out;
+}
+
+.VisionMission-feature-item.animate-in {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 /* Content Wrapper */
 .VisionMission-content-wrapper {
   display: flex;
   align-items: center;
-  gap: 60px;
+  gap: 50px;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
@@ -28,7 +82,7 @@
   flex-direction: row-reverse;
 }
 
-/* Vision Section */
+/* Sections */
 .VisionMission-section {
   padding: 100px 0;
   background: #f8f9fa;
@@ -46,43 +100,41 @@
 .VisionMission-image-content {
   flex: 1;
   position: relative;
+  display: flex;
+  justify-content: center;
 }
 
 .VisionMission-section-title {
   font-size: 2.5rem;
   font-weight: 700;
   color: #2c3e50;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
   position: relative;
-}
-
-.VisionMission-centered {
-  text-align: center;
-  margin-bottom: 60px;
 }
 
 .VisionMission-section-title::after {
   content: '';
   position: absolute;
-  bottom: -10px;
+  bottom: -8px;
   left: 0;
-  width: 120px;
+  width: 80px;
   height: 4px;
-  background: #667eea;
+  background: linear-gradient(135deg, #667eea, #764ba2);
   border-radius: 2px;
-  margin-left: 210px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.8s ease 0.3s;
 }
 
-.VisionMission-centered::after {
-  left: 50%;
-  transform: translateX(-50%);
+.VisionMission-section-title.animate-in::after {
+  transform: scaleX(1);
 }
 
 .VisionMission-section-description {
   font-size: 1.1rem;
   line-height: 1.8;
   color: #555;
-  margin-bottom: 40px;
+  margin-bottom: 35px;
   text-align: justify;
 }
 
@@ -111,7 +163,7 @@
 .VisionMission-checkmark {
   width: 20px;
   height: 20px;
-  background: #67e6dc;
+  background: linear-gradient(135deg, #67e6dc, #4FC3F7);
   color: white;
   border-radius: 50%;
   display: flex;
@@ -120,79 +172,232 @@
   font-size: 12px;
   font-weight: bold;
   flex-shrink: 0;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(103, 230, 220, 0.3);
+}
+
+.VisionMission-feature-item:hover .VisionMission-checkmark {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
 }
 
 /* Images */
 .VisionMission-image {
   width: 100%;
-  height: 400px;
+  max-width: 500px;
+  height: 350px;
   object-fit: cover;
   border-radius: 15px;
-  box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s ease;
 }
 
 .VisionMission-image:hover {
-  transform: translateY(-5px);
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
 }
 
-/* Responsive Design */
+/* Enhanced Mobile Responsive Design */
+@media (max-width: 1200px) {
+  .VisionMission-content-wrapper {
+    gap: 40px;
+    padding: 0 30px;
+  }
+  
+  .VisionMission-section-title {
+    font-size: 2.2rem;
+  }
+  
+  .VisionMission-image {
+    height: 300px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .VisionMission-content-wrapper {
+    gap: 35px;
+    padding: 0 25px;
+  }
+  
+  .VisionMission-section {
+    padding: 80px 0;
+  }
+  
+  .VisionMission-section-title {
+    font-size: 2rem;
+  }
+  
+  .VisionMission-section-description {
+    font-size: 1rem;
+  }
+  
+  .VisionMission-image {
+    height: 280px;
+  }
+}
+
 @media (max-width: 768px) {
   .VisionMission-content-wrapper,
   .VisionMission-reverse {
     flex-direction: column;
     gap: 40px;
     text-align: center;
+    padding: 0 20px;
   }
-
-  .VisionMission-section-title {
-    font-size: 2rem;
-  }
-
-  .VisionMission-section-title::after {
-    left: 50%;
-    transform: translateX(-50%);
-  }
-
-  .VisionMission-section,
-  .VisionMission-services {
+  
+  .VisionMission-section {
     padding: 60px 0;
   }
+  
+  .VisionMission-section-title {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+  }
+  
+  .VisionMission-section-title::after {
+    left: 50%;
+    transform: translateX(-50%) scaleX(0);
+    width: 60px;
+  }
+  
+  .VisionMission-section-title.animate-in::after {
+    transform: translateX(-50%) scaleX(1);
+  }
+  
+  .VisionMission-section-description {
+    font-size: 0.95rem;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  
+  .VisionMission-image {
+    max-width: 100%;
+    height: 250px;
+  }
+  
+  .VisionMission-features-list {
+    gap: 12px;
+  }
+  
+  .VisionMission-feature-item {
+    justify-content: center;
+    font-size: 0.9rem;
+    padding: 8px 0;
+  }
+  
+  .VisionMission-feature-item:hover {
+    transform: translateY(-2px);
+  }
+}
 
-  .VisionMission-services-grid {
-    grid-template-columns: 1fr;
+@media (max-width: 600px) {
+  .VisionMission-container {
+    margin-top: 0;
+  }
+  
+  .VisionMission-content-wrapper {
+    padding: 0 15px;
     gap: 30px;
   }
-
-  .VisionMission-service-card {
-    padding: 25px;
+  
+  .VisionMission-section {
+    padding: 50px 0;
   }
-
+  
+  .VisionMission-section-title {
+    font-size: 1.6rem;
+    margin-bottom: 18px;
+  }
+  
+  .VisionMission-section-title::after {
+    width: 50px;
+    height: 3px;
+  }
+  
+  .VisionMission-section-description {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 25px;
+  }
+  
   .VisionMission-image {
-    height: 300px;
+    height: 220px;
+    border-radius: 12px;
+  }
+  
+  .VisionMission-feature-item {
+    font-size: 0.85rem;
+    gap: 12px;
+  }
+  
+  .VisionMission-checkmark {
+    width: 18px;
+    height: 18px;
+    font-size: 11px;
   }
 }
 
 @media (max-width: 480px) {
   .VisionMission-content-wrapper {
-    padding: 0 15px;
+    padding: 0 12px;
+    gap: 25px;
   }
-
+  
+  .VisionMission-section {
+    padding: 40px 0;
+  }
+  
   .VisionMission-section-title {
-    font-size: 1.8rem;
+    font-size: 1.4rem;
+    margin-bottom: 15px;
   }
-
-  .VisionMission-service-card {
-    padding: 20px;
+  
+  .VisionMission-section-description {
+    font-size: 0.85rem;
+    margin-bottom: 20px;
   }
-
-  .VisionMission-services-grid {
-    grid-template-columns: 1fr;
+  
+  .VisionMission-image {
+    height: 200px;
+    border-radius: 10px;
+  }
+  
+  .VisionMission-feature-item {
+    font-size: 0.8rem;
+    gap: 10px;
+    padding: 6px 0;
+  }
+  
+  .VisionMission-checkmark {
+    width: 16px;
+    height: 16px;
+    font-size: 10px;
+  }
+  
+  .VisionMission-features-list {
+    gap: 10px;
   }
 }
 
-/* Hover Effects */
-.VisionMission-feature-item:hover .VisionMission-checkmark {
-  background: #667eea;
-  transform: scale(1.1);
+@media (max-width: 360px) {
+  .VisionMission-content-wrapper {
+    padding: 0 10px;
+  }
+  
+  .VisionMission-section-title {
+    font-size: 1.3rem;
+  }
+  
+  .VisionMission-section-description {
+    font-size: 0.8rem;
+  }
+  
+  .VisionMission-image {
+    height: 180px;
+  }
+  
+  .VisionMission-feature-item {
+    font-size: 0.75rem;
+  }
 }

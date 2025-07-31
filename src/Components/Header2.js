@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import './Header2.css';
 import logo from '../Assests/Company Logo.png';
@@ -6,6 +6,7 @@ import logo from '../Assests/Company Logo.png';
 const Header2 = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   // Add scroll effect to header
   useEffect(() => {
@@ -24,6 +25,11 @@ const Header2 = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Close mobile menu when route changes
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [location.pathname]);
+
   // Debug: Check current pathname
   console.log('Current pathname:', location.pathname);
 
@@ -37,10 +43,16 @@ const Header2 = () => {
     if (location.pathname !== path) {
       navigate(path);
     }
+    setIsMobileMenuOpen(false); // Close mobile menu after navigation
   };
 
   const handleContactClick = () => {
     navigate('/ContactUs');
+    setIsMobileMenuOpen(false); // Close mobile menu after navigation
+  };
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
   return (
@@ -57,8 +69,21 @@ const Header2 = () => {
           />
         </div>
 
+        {/* Mobile Menu Toggle Button */}
+        <button 
+          className="header2-mobile-toggle"
+          onClick={toggleMobileMenu}
+          aria-label="Toggle mobile menu"
+        >
+          <span className={`header2-hamburger ${isMobileMenuOpen ? 'active' : ''}`}>
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </button>
+
         {/* Navigation Menu */}
-        <nav className="header2-menu-container">
+        <nav className={`header2-menu-container ${isMobileMenuOpen ? 'mobile-open' : ''}`}>
           <ul className="header2-menu-list">
             <li className="header2-menu-item">
               <button

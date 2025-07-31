@@ -8,6 +8,7 @@ import Services from './Pages/Services';
 import Internships from './Pages/Internships';
 import Courses from './Pages/Courses'; 
 import ContactUs from './Pages/ContactUs';
+import ServiceDetail from './Pages/ServiceDetail';
 
 function App() {
   // 🎯 DEFAULT PAGE SETTING - Change this to set your default page
@@ -26,7 +27,10 @@ function App() {
           <Route path="/services" element={<Services />} />
           <Route path="/internships" element={<Internships />} />
           <Route path="/courses" element={<Courses />} /> 
-            <Route path="/ContactUs" element={<ContactUs />} /> 
+          <Route path="/ContactUs" element={<ContactUs />} />
+          
+          {/* ✅ CORRECTED: Dynamic service detail route with parameter */}
+          <Route path="/service/:serviceName" element={<ServiceDetail />} />
           
           {/* ✅ Fallback route - Any unknown route redirects to default page */}
           <Route path="*" element={<Navigate to={DEFAULT_PAGE} replace />} />

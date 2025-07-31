@@ -119,6 +119,14 @@ const Header2 = () => {
             </li>
             <li className="header2-menu-item">
               <button
+                className={`header2-menu-link ${location.pathname === '/Career' ? 'header2-menu-link-current' : ''}`}
+                onClick={() => handleLinkClick('/career')}
+              >
+                Career
+              </button>
+            </li>
+            <li className="header2-menu-item">
+              <button
                 className={`header2-menu-link ${location.pathname === '/Aboutus' ? 'header2-menu-link-current' : ''}`}
                 onClick={() => handleLinkClick('/Aboutus')}
               >

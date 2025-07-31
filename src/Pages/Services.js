@@ -1,13 +1,15 @@
 import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Footer from '../Components/Footer';
 import Header from '../Components/Header2';
 import { servicesData } from '../Data/servicesData';
 import './Services.css';
 
-const heroBg =
-  "https://img.freepik.com/free-photo/discussing-plans_1098-14250.jpg?semt=ais_hybrid&w=740";
+const heroBg = "https://img.freepik.com/free-photo/discussing-plans_1098-14250.jpg?semt=ais_hybrid&w=740";
 
 const Services = () => {
+  const navigate = useNavigate();
+
   useEffect(() => {
     const revealOnScroll = () => {
       const cards = document.querySelectorAll('.scroll-animate');
@@ -23,6 +25,11 @@ const Services = () => {
     revealOnScroll();
     return () => window.removeEventListener('scroll', revealOnScroll);
   }, []);
+
+  const handleViewDetails = (serviceTitle) => {
+    // Navigate to service detail page with encoded service name
+    navigate(`/service/${encodeURIComponent(serviceTitle)}`);
+  };
 
   return (
     <div className="services-page">
@@ -58,7 +65,12 @@ const Services = () => {
               </div>
               <h3 className="service-title">{service.title}</h3>
               <p className="service-desc">{service.description}</p>
-              <button className="service-view-btn">View Details</button>
+              <button 
+                className="service-view-btn"
+                onClick={() => handleViewDetails(service.title)}
+              >
+                View Details
+              </button>
             </div>
           );
         })}
